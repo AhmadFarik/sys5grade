@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مخطط جلوس الطلاب</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#12304a;--teal:#0f9d8a;--amber:#f2a71b;--coral:#e4572e;--bg:#e8edf1;--panel:#fff;--line:#d3dbe2;--ink:#1b2a38;--soft:#5b6b7a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1620;--panel:#172431;--line:#2a3a49;--ink:#e6edf3;--soft:#9fb0bf}}
+:root[data-theme="dark"]{--bg:#0d1620;--panel:#172431;--line:#2a3a49;--ink:#e6edf3;--soft:#9fb0bf}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Cairo,Tahoma,Arial,sans-serif}
+.app{max-width:1240px;margin:0 auto;padding:12px}
+.bar{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:12px;display:grid;gap:10px}
+.bar h2{margin:0;font-size:1.15rem;font-weight:800}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{font:inherit;font-size:.9rem;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:.45em .9em;border-radius:8px;cursor:pointer}
+.btn:hover{border-color:var(--teal)}
+.btn.pri{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:600}
+.btn:disabled{opacity:.45;cursor:default}
+.f{display:grid;gap:2px;font-size:.78rem;color:var(--soft);flex:1 1 150px}
+.f input,.ed input{font:inherit;font-size:.92rem;padding:.4em .6em;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--ink);width:100%}
+.ed{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px;border-radius:8px;background:color-mix(in srgb,var(--amber) 14%,transparent)}
+.ed .lb{font-size:.88rem;font-weight:600;min-width:150px}
+.ed input{flex:1 1 200px;width:auto}
+.hint{margin:0;font-size:.8rem;color:var(--soft);line-height:1.7}
+.stage{overflow-x:auto}
+.sheet{width:297mm;height:209mm;position:relative;overflow:hidden;background:#f2f6f8;margin:0 auto;color:#12304a;box-shadow:0 4px 24px rgba(0,0,0,.18);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.sheet::before{content:"";position:absolute;inset:0;background-image:linear-gradient(135deg,rgba(18,48,74,.05) 25%,transparent 25%),linear-gradient(225deg,rgba(18,48,74,.05) 25%,transparent 25%);background-size:12mm 12mm;pointer-events:none}
+.sheet>*{position:relative}
+.hd{height:24mm;background:#12304a;display:flex;align-items:center;gap:6mm;padding:0 9mm 0 66mm;color:#fff;overflow:hidden}
+.hd svg{position:absolute;inset:0;width:100%;height:100%}
+.hd>*:not(svg){position:relative}
+.hx{width:24mm;height:19mm;flex:none;background:#f2a71b;color:#12304a;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);display:grid;place-items:center;text-align:center;font-weight:800;font-size:10pt;line-height:1.15;padding:0 2mm;white-space:nowrap}
+.tt small{display:block;font-size:8.5pt;color:#9fd8cf}
+.tt h1{margin:0;font-size:20pt;font-weight:800;line-height:1.2}
+.tt p{margin:0;font-size:9.5pt;color:#cfe1ee}
+.stripe{height:1.4mm;background:linear-gradient(90deg,#0f9d8a 0 33.3%,#f2a71b 33.3% 66.6%,#e4572e 66.6%)}
+.front{display:flex;gap:4mm;margin:3mm 10mm 0;height:10mm}
+.brd{flex:1;background:#12304a;color:#fff;display:grid;place-items:center;font-weight:600;font-size:9.5pt;clip-path:polygon(2.5% 0,97.5% 0,100% 100%,0 100%)}
+.tch{width:34mm;background:#0f9d8a;color:#fff;display:grid;place-items:center;font-weight:600;font-size:8.5pt;clip-path:polygon(12% 0,88% 0,100% 50%,88% 100%,12% 100%,0 50%)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm;margin:3mm 10mm 0;height:156mm}
+.col{--tx:#fff;display:flex;flex-direction:column;gap:1.5mm;padding:0 2.2mm 3mm;background:#e3ebf0;background:color-mix(in srgb,var(--c) 11%,#fff);clip-path:polygon(0 0,100% 0,100% calc(100% - 5mm),calc(100% - 5mm) 100%,0 100%)}
+.c0{--c:#0f9d8a}.c1{--c:#f2a71b;--tx:#12304a}.c2{--c:#e4572e}
+.ct{display:flex;align-items:center;gap:2mm;height:7.5mm;margin:0 -2.2mm 1mm;padding:0 3mm;background:var(--c);color:var(--tx);font-weight:800;font-size:10.5pt}
+.ct b{width:6mm;height:5.2mm;background:#fff;color:#12304a;display:grid;place-items:center;font-size:8.5pt;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}
+.desk{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:1.3mm;position:relative;padding-bottom:.9mm}
+.desk::after{content:"";position:absolute;left:0;right:0;bottom:0;height:.8mm;background:var(--c)}
+.seat{position:relative;background:#fff;box-shadow:inset -1.6mm 0 0 var(--c);clip-path:polygon(0 0,calc(100% - 3.5mm) 0,100% 3.5mm,100% 100%,3.5mm 100%,0 calc(100% - 3.5mm));padding:1.3mm 3.5mm 1mm 8mm;display:flex;align-items:center;cursor:pointer;min-width:0}
+.num{position:absolute;top:50%;left:1.2mm;transform:translateY(-50%);width:6.4mm;height:6.4mm;background:var(--c);color:var(--tx);font-size:7.5pt;font-weight:800;display:grid;place-items:center;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.nm{font-size:9.3pt;font-weight:700;line-height:1.28;color:#12304a}
+.seat.empty{background:rgba(255,255,255,.55)}
+.seat.empty .nm{font-weight:400;font-size:8pt;color:#8a99a6}
+.seat.sel{background:#fff1bd}
+.seat.ov{background:#c8efe8}
+.ft{margin:2mm 10mm 0;height:8mm;display:flex;align-items:center;justify-content:space-between;font-size:8.5pt;font-weight:600}
+.ft .bk{flex:1;margin:0 5mm;text-align:center;background:#12304a;color:#fff;padding:.9mm 0;clip-path:polygon(3% 0,97% 0,100% 100%,0 100%);font-size:8.5pt}
+.btn.on{background:var(--teal);color:#fff;border-color:var(--teal);font-weight:600}
+#hintB{display:none}
+body[data-v="b"] #hintP{display:none}
+body[data-v="b"] #hintB{display:block}
+body[data-v="b"] .sheet{display:none}
+.bpage{width:210mm;height:296mm;margin:0 auto 12px;display:none;grid-template-columns:repeat(3,64mm);grid-template-rows:repeat(3,90mm);gap:3mm;justify-content:center;align-content:center;background:#fff;box-shadow:0 4px 24px rgba(0,0,0,.18);overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body[data-v="b"] .bpage{display:grid}
+.bg{--tx:#fff;position:relative;border:.3mm dashed #93a1ad;overflow:hidden;background:#fff;display:flex;flex-direction:column;text-align:center;color:#12304a}
+.bg.c1{--tx:#12304a}
+.hole{position:absolute;z-index:2;top:3mm;left:50%;width:11mm;height:2.6mm;margin-left:-5.5mm;border-radius:2mm;background:#fff;border:.25mm solid #93a1ad}
+.bh{position:relative;height:28mm;background:#12304a;color:#fff;padding-top:9.5mm;clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}
+.bh svg{position:absolute;inset:0;width:100%;height:100%}
+.bh b{position:relative;display:block;font-size:11pt;font-weight:800;line-height:1.2}
+.bh small{position:relative;display:block;font-size:7pt;color:#9fd8cf}
+.bd{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2mm;padding:0 4mm}
+.dm{position:relative;z-index:1;margin-top:-9mm;width:17mm;height:17mm;background:var(--c);color:var(--tx);font-size:19pt;font-weight:800;display:grid;place-items:center;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);margin-bottom:1mm}
+.f1{font-size:17pt;font-weight:800;line-height:1.15}
+.f2{font-size:9.5pt;color:#5b6b7a;font-weight:600;line-height:1.3}
+.f3{font-size:12.5pt;font-weight:800;padding-bottom:1mm;border-bottom:.9mm solid var(--c)}
+.bf{background:var(--c);color:var(--tx);font-size:8.5pt;font-weight:700;padding:4.5mm 2mm 2mm;line-height:1.3;clip-path:polygon(0 22%,50% 0,100% 22%,100% 100%,0 100%)}
+.bf small{display:block;font-size:7pt;font-weight:400}
+@page{size:A4 landscape;margin:0}
+@media print{
+ html,body{margin:0;padding:0;background:#fff}
+ body[data-v="p"]{width:297mm;height:209mm;overflow:hidden}
+ .bpage{zoom:1!important;box-shadow:none;margin:0;break-after:page;page-break-after:always}
+ .bpage:last-child{break-after:auto;page-break-after:auto}
+ :root{padding:0}
+ .no-print{display:none!important}
+ .app{padding:0;max-width:none}
+ .stage{overflow:visible}
+ .sheet{zoom:1!important;box-shadow:none;page-break-after:avoid;break-inside:avoid}
+ .seat.sel,.seat.ov{background:#fff}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body data-v="p">
+<div class="app">
+ <div class="bar no-print">
+  <div class="row"><button class="btn on" id="vP">مخطط الجلوس</button><button class="btn" id="vB">بطاقات الأسماء (بادجات)</button></div>
+  <div class="row">
+   <button class="btn pri" id="bPrint">طباعة / حفظ PDF</button>
+   <button class="btn" id="bShuf">توزيع عشوائي</button>
+   <button class="btn" id="bAbc">ترتيب أبجدي</button>
+   <button class="btn" id="bList">ترتيب القائمة الأصلية</button>
+   <button class="btn" id="bUndo">تراجع</button>
+   <button class="btn" id="bReset">استعادة الافتراضي</button>
+  </div>
+  <div class="row">
+   <label class="f">الصف والشعبة<input id="fCls"></label>
+   <label class="f">مربي الصف<input id="fTea"></label>
+   <label class="f">التاريخ<input id="fDate"></label>
+   <label class="f">المدرسة (اختياري)<input id="fSch"></label>
+  </div>
+  <div class="ed">
+   <span class="lb" id="edLb">اضغط على مقعد لتعديله</span>
+   <input id="edIn" placeholder="اسم الطالب" disabled>
+   <button class="btn" id="bClr" disabled>إفراغ المقعد</button>
+  </div>
+  <p class="hint" id="hintB">تُطبع 9 بطاقات في كل صفحة A4 (3 × 3) بمقاس 64 × 90 ملم، ومرتبة حسب أرقام المقاعد وبلون العمود. قصّ على الخط المتقطع، واثقب الفتحة العلوية لتعليقها بحبل. البطاقات تتبع آخر ترتيب للجلوس، وتحديث الأسماء أو الصف من الحقول أعلاه ينعكس عليها مباشرة. عند الطباعة اختر حجم الورق A4 عموديًا وألغِ الهوامش.</p>
+ <p class="hint" id="hintP">لتبديل طالبين: اضغط على مقعد ثم على المقعد الآخر، أو اسحب وأفلت. يمكنك نقل طالب إلى مقعد فارغ بالطريقة نفسها. تُحفظ التعديلات تلقائيًا في هذا المتصفح. إن لم تفتح نافذة الطباعة، افتح الصفحة في نافذة المتصفح نفسها واضغط Ctrl+P ثم اختر «حفظ كـ PDF» بحجم A4 أفقي.</p>
+ </div>
+ <div class="stage" id="stage"><div class="sheet" id="sheet"></div><div id="bwrap"></div></div>
+</div>
+<script>
+const NAMES=["احمد سلطان ناصر القرعان","امير همام احمد ابو هلاله","ايهم سعد حاتم الفرجات","تميم فؤاد نعيم مصلح","حامد ابراهيم حامد كريشان","خالد خليل خالد البواب","راشد عبد الكريم شعبان الكيال","رداد اسماعيل رداد المعاني","ريان احمد عادل عساف","ريان علاء عاشق عليان","ريان محمد ابراهيم الحميدي","زيد حسام عبد المجيد المطرمي","سراج خالد سلمان حراره","سلمان عيسى محمد ابو تايه","سمير محمود سمير البواب","سيف الله خليل حسن الامامي","سيف نسيم عوني عساف","ضياء الدين اياد علي المسيعدين","عبد الرحمن فوزي علي كريشان","عبد الرحمن محمد تيسير عوجان","عبد العزيز عماد علي مرعي","علاء عطا صالح القايض","علي جهاد عاصي العجامي","عمر محمد حماد الحويطي","عيسى ماهر مازن العجامي","قيس هاني محمد المهاينه","كرم خالد نايف عبد الدايم","كرم عمر خليل مسعود","مؤمن محمد سالم النعيمات","محمد علي صالح كايد","محمد منصور محمد كريشان","محمد نادر شاهر طبيري","محمد ياسين سلطي كريشان","محمد ياسين سليمان المعاني","محمد يزن محمد ابو هلاله","معتز وليد عطا الله البزايعه"];
+const CH=["الأول","الثاني","الثالث"],KEY="seating_plan_v1";
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fresh=()=>({meta:{cls:"الخامس ب",teacher:"أحمد الفرخ",date:"2026/9/28",school:""},seats:NAMES.slice()});
+let st=null,sel=-1,hist=[],drag=null;
+try{const s=JSON.parse(localStorage.getItem(KEY));if(s&&s.meta&&Array.isArray(s.seats)&&s.seats.length===36)st=s}catch(e){}
+st=st||fresh();
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const push=()=>{hist.push(JSON.stringify(st));if(hist.length>60)hist.shift()};
+function sheetHTML(){
+ const m=st.meta;let cols="",cnt=st.seats.filter(Boolean).length;
+ for(let c=0;c<3;c++){let rows="";
+  for(let r=0;r<6;r++){rows+='<div class="desk">';
+   for(let s=0;s<2;s++){const i=c*12+r*2+s,n=st.seats[i];
+    rows+=`<div class="seat${n?"":" empty"}${i===sel?" sel":""}" data-i="${i}" draggable="true"><span class="num">${i+1}</span><span class="nm">${n?esc(n):"مقعد فارغ"}</span></div>`}
+   rows+="</div>"}
+  cols+=`<section class="col c${c}"><div class="ct"><b>${c+1}</b><span>العمود ${CH[c]}</span></div>${rows}</section>`}
+ const svg='<svg viewBox="0 0 297 24" preserveAspectRatio="none"><polygon points="0,0 52,0 26,24 0,24" fill="#e4572e"/><polygon points="26,24 52,0 78,0 52,24" fill="#f2a71b"/><polygon points="52,24 78,0 60,0 34,24" fill="#0f9d8a" opacity="0"/><polygon points="52,24 78,0 104,0 78,24" fill="#0f9d8a" opacity="0"/><polygon points="297,0 297,24 270,24" fill="#0f9d8a" opacity=".55"/><polygon points="297,0 280,0 297,14" fill="#f2a71b" opacity=".8"/></svg>';
+ return `<header class="hd">${svg}<div class="hx">${esc(m.cls||"—")}</div><div class="tt">${m.school?`<small>${esc(m.school)}</small>`:""}<h1>مخطط جلوس الطلاب</h1><p>${m.teacher?"مربي الصف: "+esc(m.teacher):""}${m.teacher&&m.date?"  |  ":""}${m.date?"التاريخ: "+esc(m.date):""}</p></div></header><div class="stripe"></div>
+ <div class="front"><div class="brd">السبورة — مقدمة الغرفة</div><div class="tch">مكتب المعلم</div></div>
+ <div class="grid">${cols}</div>
+ <footer class="ft"><span>عدد الطلاب: ${cnt} / 36</span><span class="bk">مؤخرة الغرفة</span><span>36 مقعدًا موزعة على 3 أعمدة</span></footer>`}
+function panel(){
+ const i=sel,inp=$("edIn"),on=i>=0;
+ inp.disabled=!on;$("bClr").disabled=!on||!st.seats[i];
+ inp.value=on?(st.seats[i]||""):"";
+ $("edLb").textContent=on?`المقعد رقم ${i+1} — العمود ${CH[Math.floor(i/12)]}`:"اضغط على مقعد لتعديله";
+ $("bUndo").disabled=!hist.length}
+function render(){$("sheet").innerHTML=sheetHTML();$("bwrap").innerHTML=view==="b"?badgesHTML():"";panel();fit()}
+function swap(a,b){push();[st.seats[a],st.seats[b]]=[st.seats[b],st.seats[a]];sel=-1;save();render()}
+function fit(){const w=$("stage").clientWidth;document.querySelectorAll(".sheet,.bpage").forEach(el=>{el.style.zoom=1;const o=el.offsetWidth;if(o)el.style.zoom=Math.max(.5,Math.min(1.25,w/o))})}
+const sh=$("sheet"),seatOf=e=>e.target.closest(".seat");
+sh.addEventListener("click",e=>{const s=seatOf(e);if(!s)return;const i=+s.dataset.i;
+ if(sel<0)sel=i;else if(sel===i)sel=-1;else{swap(sel,i);return}
+ render();if(sel>=0&&!matchMedia("(pointer:coarse)").matches)$("edIn").focus()});
+sh.addEventListener("dragstart",e=>{const s=seatOf(e);if(!s)return;drag=+s.dataset.i;e.dataTransfer.setData("text/plain",String(drag));e.dataTransfer.effectAllowed="move"});
+sh.addEventListener("dragover",e=>{const s=seatOf(e);if(s){e.preventDefault();s.classList.add("ov")}});
+sh.addEventListener("dragleave",e=>{const s=seatOf(e);if(s)s.classList.remove("ov")});
+sh.addEventListener("drop",e=>{e.preventDefault();const s=seatOf(e);if(s&&drag!==null&&+s.dataset.i!==drag)swap(drag,+s.dataset.i);drag=null;render()});
+sh.addEventListener("dragend",()=>{drag=null;render()});
+$("edIn").addEventListener("change",e=>{if(sel<0)return;const v=e.target.value.trim();push();st.seats[sel]=v||null;save();render()});
+$("bClr").onclick=()=>{if(sel<0)return;push();st.seats[sel]=null;save();render()};
+$("bShuf").onclick=()=>{push();const a=st.seats.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}st.seats=a;sel=-1;save();render()};
+$("bAbc").onclick=()=>{push();const n=st.seats.filter(Boolean).sort((a,b)=>a.localeCompare(b,"ar"));while(n.length<36)n.push(null);st.seats=n;sel=-1;save();render()};
+$("bList").onclick=()=>{push();st.seats=NAMES.slice();sel=-1;save();render()};
+$("bReset").onclick=()=>{push();st=fresh();sel=-1;save();render();bind()};
+$("bUndo").onclick=()=>{if(!hist.length)return;st=JSON.parse(hist.pop());sel=-1;save();render();bind()};
+$("bPrint").onclick=()=>{sel=-1;render();try{window.print()}catch(e){alert("تعذّرت الطباعة من هنا. افتح الصفحة في المتصفح واضغط Ctrl+P.")}};
+const F={fCls:"cls",fTea:"teacher",fDate:"date",fSch:"school"};
+function bind(){for(const id in F)$(id).value=st.meta[F[id]]||""}
+for(const id in F)$(id).addEventListener("input",e=>{st.meta[F[id]]=e.target.value;save();render()});
+addEventListener("resize",fit);
+addEventListener("beforeprint",()=>{sel=-1;render();sh.style.zoom=1});
+addEventListener("afterprint",fit);
+let view="p";
+function split(n){const t=n.trim().split(/\s+/);if(t.length<2)return[n,"",""];let k=1;if(t[0]==="عبد"||["الله","الدين"].includes(t[1]))k=2;if(t.length<=k)return[t.join(" "),"",""];let e=t.length-1;if(e-1>=k&&["ابو","عبد","ابن","بن"].includes(t[e-1]))e--;return[t.slice(0,k).join(" "),t.slice(k,e).join(" "),t.slice(e).join(" ")]}
+function badgesHTML(){const m=st.meta,it=[];st.seats.forEach((n,i)=>{if(n)it.push([n,i])});let o="";
+ for(let p=0;p<it.length;p+=9){o+='<div class="bpage">'+it.slice(p,p+9).map(([n,i])=>{const c=Math.floor(i/12),[a,b,l]=split(n);
+  return `<div class="bg c${c}"><i class="hole"></i><div class="bh"><svg viewBox="0 0 64 28" preserveAspectRatio="none"><polygon points="0,0 22,0 0,16" fill="#e4572e"/><polygon points="64,0 42,0 64,16" fill="#0f9d8a"/></svg><b>${esc(m.cls||"")}</b><small>${esc(m.school||"")}</small></div><div class="bd"><div class="dm">${i+1}</div><div class="f1">${esc(a)}</div>${b?`<div class="f2">${esc(b)}</div>`:""}${l?`<div class="f3">${esc(l)}</div>`:""}</div><div class="bf">العمود ${CH[c]} — مقعد ${i+1}${m.teacher?`<small>مربي الصف: ${esc(m.teacher)}</small>`:""}</div></div>`}).join("")+"</div>"}
+ return o}
+function setView(v){view=v;document.body.dataset.v=v;$("vP").classList.toggle("on",v==="p");$("vB").classList.toggle("on",v==="b");
+ let s=$("pg");if(!s){s=document.createElement("style");s.id="pg";document.head.appendChild(s)}
+ s.textContent="@page{size:A4 "+(v==="b"?"portrait":"landscape")+";margin:0}";render()}
+$("vP").onclick=()=>setView("p");$("vB").onclick=()=>setView("b");
+bind();setView("p");
+</script>
+</body>
+</html>
